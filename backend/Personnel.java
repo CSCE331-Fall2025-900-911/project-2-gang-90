@@ -16,6 +16,8 @@ public class Personnel
     public String Role;
     public float Salary;
 
+    public static int Seed = 1;
+
     public Personnel(int id, String name, String role, float salary) 
     {
         this.ID = id;
@@ -32,7 +34,7 @@ public class Personnel
         List<String> firstName = Arrays.asList("John", "Jane", "Alex", "Emily", "Chris", "Michael", "Jaiden", "Kevin", "Daniel", "Brendan");
         List<String> lastName = Arrays.asList("Smith", "Johnson", "Williams", "Ramirez", "Sidhu", "Chen", "Zhang", "Larson");
 
-        Random rand = new Random();
+        Random rand = new Random(Seed);
         DecimalFormat money = new DecimalFormat("0.00");
 
         try (BufferedWriter w = Files.newBufferedWriter(OUTPUT, StandardCharsets.UTF_8)) 
@@ -44,7 +46,7 @@ public class Personnel
             {
                 String name = firstName.get(rand.nextInt(firstName.size())) + " " + lastName.get(rand.nextInt(lastName.size()));
                 String role = rand.nextBoolean() ? "cashier" : "manager";
-                float salary = role.equals("cashier") ? 15.00f : 25.00f;
+                float salary = role.equals("cashier") ? rand.nextInt(15, 20) : rand.nextInt(25, 30);
 
                 Personnel p = new Personnel(i, name, role, salary);
 
