@@ -1,0 +1,1 @@
+# Central script to populate the database with initial data
