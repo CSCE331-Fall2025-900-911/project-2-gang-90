@@ -22,3 +22,27 @@ LIMIT 5;
 --Average price of all menu items
 SELECT AVG(price) AS average_item_price
 FROM menu;
+
+
+--Total sales over all time
+SELECT SUM(total_price) As profit 
+From transactions;
+
+--Total number of sales 
+SELECT COUNT(*) As total_transations
+From transactions;
+
+--Select all transations given customer_name
+DECLARE @name AS VARCHAR(100)='Test cutomer'
+SELECT * From transactions
+WHERE customer_name = @name;
+
+--Bottom 5 popular menu items
+SELECT item_name, item_popularity
+From menu
+ORDER BY item_popularity ASC 
+LIMIT 5; 
+
+--
+
+
