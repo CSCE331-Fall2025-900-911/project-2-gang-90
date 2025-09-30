@@ -1,4 +1,4 @@
-package backend;
+package backend.scripts;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
