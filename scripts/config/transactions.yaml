@@ -1,6 +1,6 @@
 # Number of transactions to randomly generate
-num_transactions: 1
-max_amount: 1000.0
+num_transactions: 1000000
+max_amount: 1000000
 
 # Format: YYYY-MM-DD
 start: 2024-01-01

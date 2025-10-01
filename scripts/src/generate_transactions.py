@@ -34,6 +34,7 @@ class TransactionGenerator:
                 with open(config_path, "r", encoding="utf-8") as f:
                     cfg = yaml.safe_load(f) or {}
                 num_transactions = cfg.get("num_transactions", num_transactions)
+                max_amount = cfg.get("max_amount", max_amount)
                 start = cfg.get("start", start)
                 end = cfg.get("end", end)
                 path = cfg.get("path", path)
