@@ -128,5 +128,6 @@ class TransactionGenerator:
                 'employee_id': employee_id,
                 'total_price': total_price
             })
-        
+        # Save to CSV
+        rows.to_csv(self.path)
         return pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])

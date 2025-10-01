@@ -1,0 +1,41 @@
+ingredient_name,category,quantity
+black tea,tea base,400
+green tea,tea base,400
+thai tea,tea base,400
+jasmine tea,tea base,400
+whole milk,milk and creamer,400
+condensed milk,milk and creamer,300
+evaporated milk,milk and creamer,200
+coconut milk,milk and creamer,200
+non-dairy creamer,milk and creamer,200
+fresh cream,milk and creamer,200
+matcha powder,powders,250
+taro powder,powders,250
+cocoa powder,powders,250
+cane syrup,syrups,250
+honey,syrups,250
+brown sugar syrup,syrups,250
+mango syrup,syrups,100
+peach syrup,syrups,100
+passionfruit syrup,syrups,100
+lychee syrup,syrups,100
+strawberry syrup,syrups,100
+mango syrup,fruits,250
+peach syrup,fruits,250
+lemon,fruits,250
+berry,fruits,250
+boba,toppings,500
+honey boba,toppings,250
+lychee jelly,toppings,500
+coconut jelly,toppings,250
+pudding,toppings,250
+ice cream,toppings,100
+oreo,toppings,100
+ice cubes,,1000
+crushed ice,,800
+water,,1000
+cups,,1000
+seal-lids,,1000
+straws,,1000
+napkins,,1000
+plastic bags,,1000
