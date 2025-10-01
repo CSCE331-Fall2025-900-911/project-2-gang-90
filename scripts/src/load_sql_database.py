@@ -8,7 +8,7 @@ TRANSACTION_DETAILS_TABLE_NAME = "transaction_details"
 
 DB_USER = "gang_90"
 DB_PASS = "gang_90"
-DB_HOST = "localhost"
+DB_HOST = "csce-315-db.engr.tamu.edu"
 DB_PORT = "5432"
 DB_NAME = "gang_90_db"
 
