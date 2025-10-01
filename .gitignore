@@ -243,3 +243,4 @@ __marimo__/
 .streamlit/secrets.toml
 
 scripts/data/transactions.csv
+scripts/data/transaction_details.csv

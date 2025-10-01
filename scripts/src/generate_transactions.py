@@ -18,7 +18,8 @@ class TransactionGenerator:
         max_amount: float = 1000.0,
         start = None,
         end = None,
-        path:str = "data/transactions.csv",
+        path:str = "scripts/data/transactions.csv",
+        details_path: str = "scripts/data/transaction_details.csv",
         config_path: str | None = None,
     ):
         """
@@ -36,6 +37,8 @@ class TransactionGenerator:
                 start = cfg.get("start", start)
                 end = cfg.get("end", end)
                 path = cfg.get("path", path)
+                details_path = cfg.get("details_path", details_path)
+                print(f"Loaded items using config from {config_path}")
             except FileNotFoundError:
                 pass
 
@@ -55,8 +58,9 @@ class TransactionGenerator:
             self.start_timestamp, self.end_timestamp = self.end_timestamp, self.start_timestamp
 
         self.path = path
+        self.details_path = details_path
         self.config_path = config_path
-        self.details: pd.DataFrame | None = None
+        self.details: pd.DataFrame = pd.DataFrame(columns=["item_id", "temp_id"])
 
     def random_date(self, start: datetime, end: datetime) -> datetime:
         """Return a random datetime between start and end."""
@@ -96,6 +100,16 @@ class TransactionGenerator:
         return menu.sample(n = num, replace = True).reset_index(drop = True)
 
     def generateTransactions(self) -> pd.DataFrame:
+        """Generate transactions and save to CSV. Returns the DataFrame."""
+         # Prepare to collect rows
+         # Load personnel and menu data
+         # For each transaction:
+         #   - Generate random customer name
+         #   - Generate random transaction time
+         #   - Select random employee_id from personnel
+         #   - Select random menu items and calculate total price
+         #   - Append to rows list
+         # Save transactions and details to CSV files
         rows = []
         total = 0.0
         try:
@@ -122,14 +136,23 @@ class TransactionGenerator:
             total_price = round(order['price'].sum(), 2)
             total += total_price
 
+            # Record details and store in self.details
+            for _, item in order.iterrows():
+                self.details = pd.concat([self.details, pd.DataFrame([{
+                    'item_id': item['item_id'],
+                    'temp_id': i  # Temporary ID to join with transactions
+                }])], ignore_index=True)
+
             rows.append({
                 'customer_name': customer_name,
                 'transaction_time': transaction_time,  # naive datetime for TIMESTAMP WITHOUT TIME ZONE
                 'employee_id': employee_id,
-                'total_price': total_price
+                'total_price': total_price,
+                'temp_id': i  # Temporary ID for joining with details
             })
         # Save to CSV
         output = pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
-        print(self.path)
+        details_output = self.details[['item_id', 'temp_id']]
+        details_output.to_csv(self.details_path, index=False)
         output.to_csv(self.path, index=False)
         return output
