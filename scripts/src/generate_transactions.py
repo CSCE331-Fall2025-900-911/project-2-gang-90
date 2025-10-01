@@ -56,6 +56,7 @@ class TransactionGenerator:
 
         self.path = path
         self.config_path = config_path
+        self.details: pd.DataFrame | None = None
 
     def random_date(self, start: datetime, end: datetime) -> datetime:
         """Return a random datetime between start and end."""
@@ -94,7 +95,7 @@ class TransactionGenerator:
         """Return a random selection of num menu items from the menu DataFrame."""
         return menu.sample(n = num, replace = True).reset_index(drop = True)
 
-    def generate(self) -> pd.DataFrame:
+    def generateTransactions(self) -> pd.DataFrame:
         rows = []
         total = 0.0
         try:
@@ -104,7 +105,7 @@ class TransactionGenerator:
             print(f"Error: {e}")
             return pd.DataFrame(columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
 
-        employee_ids = personnel['name'].tolist()
+        employee_ids = personnel['id'].tolist()
 
         for i in range(self.num_transactions):
             # Stop if total exceeds max_amount

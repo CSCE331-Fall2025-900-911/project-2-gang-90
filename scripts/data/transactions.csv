@@ -1,33 +1,27 @@
 customer_name,transaction_time,employee_id,total_price
-Charlie Davis,2025-09-14 04:58:05.991993,Michael David Ramirez,29.75
-Bob Brown,2025-09-15 07:07:14.960169,Michael David Ramirez,18.8
-John Johnson,2025-09-29 23:51:31.205527,Jaiden Singh Sidhu,13.0
-Charlie Doe,2025-10-01 04:44:04.322579,Daniel Zhang,12.3
-Bob Johnson,2025-09-17 09:43:06.085547,Kevin Chen,6.25
-Charlie Johnson,2025-09-30 17:55:48.672996,Brendan Andrew Larson,18.9
-Jane Brown,2025-09-13 20:07:30.611068,Kevin Chen,19.7
-Diana Miller,2025-09-02 10:14:24.799084,Daniel Zhang,10.4
-Diana Smith,2025-09-27 18:11:07.586082,Michael David Ramirez,13.0
-John Doe,2025-09-02 04:15:17.396547,Kevin Chen,25.75
-Alice Doe,2025-09-06 16:42:52.132156,Jaiden Singh Sidhu,32.0
-Jane Davis,2025-09-15 12:27:50.704750,Michael David Ramirez,18.2
-John Brown,2025-09-18 23:44:52.414846,Kevin Chen,6.5
-John Doe,2025-09-23 06:17:55.909934,Jaiden Singh Sidhu,26.2
-Charlie Davis,2025-09-12 01:49:58.993284,Kevin Chen,19.05
-Bob Johnson,2025-09-20 14:12:17.123770,Daniel Zhang,13.0
-Bob Brown,2025-09-13 19:05:48.370044,Daniel Zhang,13.25
-John Miller,2025-10-01 04:45:07.648562,Michael David Ramirez,22.95
-Jane Doe,2025-09-21 11:47:54.600740,Brendan Andrew Larson,6.25
-Diana Doe,2025-09-11 11:59:46.731055,Brendan Andrew Larson,26.25
-Bob Davis,2025-09-11 17:18:19.244995,Paul Taele,6.25
-Diana Doe,2025-09-29 23:22:23.134950,Brendan Andrew Larson,6.0
-Alice Doe,2025-09-16 22:47:43.369342,Daniel Zhang,33.25
-Bob Smith,2025-09-05 09:54:29.760791,Michael David Ramirez,25.25
-Alice Miller,2025-09-21 09:19:11.211244,Brendan Andrew Larson,6.5
-Charlie Davis,2025-10-01 08:12:51.946224,Paul Taele,12.5
-Jane Davis,2025-09-26 04:18:48.500936,Kevin Chen,5.2
-Bob Davis,2025-09-09 17:55:46.384272,Brendan Andrew Larson,6.5
-Jane Davis,2025-09-19 14:46:03.759151,Paul Taele,6.25
-Jane Smith,2025-09-01 13:23:44.995762,Daniel Zhang,12.75
-John Miller,2025-09-22 20:44:29.066819,Daniel Zhang,12.55
-Alice Smith,2025-09-16 13:24:41.826806,Jaiden Singh Sidhu,19.75
+John Miller,2025-09-12 09:09:49.053206,3,12.75
+Charlie Brown,2025-09-14 16:01:37.075125,2,32.95
+Charlie Miller,2025-09-16 08:42:18.971232,6,26.25
+Jane Brown,2025-09-07 01:32:59.356750,2,12.75
+Bob Johnson,2025-09-20 15:29:47.567745,5,24.45
+Bob Miller,2025-09-28 13:28:23.546922,6,5.8
+Diana Doe,2025-09-11 13:53:27.310254,3,24.7
+Diana Brown,2025-09-23 04:23:09.479265,5,19.75
+Diana Miller,2025-09-17 10:05:54.131035,6,25.75
+Bob Davis,2025-09-22 20:35:34.012585,6,32.0
+Diana Smith,2025-09-19 17:15:09.900568,3,19.25
+Charlie Doe,2025-09-20 01:35:02.422020,1,12.3
+Bob Doe,2025-09-15 22:04:55.037885,3,24.35
+Bob Brown,2025-09-04 20:13:25.162362,4,12.75
+Charlie Davis,2025-09-24 09:45:27.942568,1,12.75
+Diana Smith,2025-09-22 22:04:26.055008,2,12.25
+Jane Miller,2025-09-21 01:24:11.032813,3,31.45
+Jane Smith,2025-09-03 23:52:56.159877,3,13.5
+Diana Miller,2025-09-18 09:15:47.689185,6,18.3
+Diana Brown,2025-09-12 08:58:52.605658,4,26.25
+John Davis,2025-09-28 05:27:40.656304,2,19.5
+John Brown,2025-09-20 22:02:32.837952,4,19.05
+Alice Doe,2025-09-11 22:32:51.896669,5,25.5
+Alice Brown,2025-09-11 12:28:07.459128,4,12.5
+Diana Johnson,2025-09-15 21:44:53.807092,3,18.3
+Charlie Brown,2025-09-23 07:18:29.474497,1,31.55
