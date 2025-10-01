@@ -94,3 +94,5 @@ SELECT
 FROM transactions
 GROUP BY day_of_week
 ORDER BY total_sales DESC;
+
+
