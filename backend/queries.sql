@@ -1,3 +1,41 @@
+--SPECIAL QUERY: select count of orders grouped by week
+SELECT
+    FLOOR(EXTRACT(EPOCH FROM (transaction_time - TIMESTAMP '2024-01-01')) / (7 * 24 * 60 * 60)) + 1 AS week_number,
+    COUNT(*) AS order_count
+FROM transactions
+GROUP BY week_number
+ORDER BY week_number;
+
+--SPECIAL QUERY: select count of orders, sum of order total grouped by hour
+SELECT
+    EXTRACT(HOUR FROM transaction_time) AS hour_of_day,
+    COUNT(*) AS order_count,
+    SUM(total_price) AS total_sales
+FROM transactions
+GROUP BY hour_of_day
+ORDER BY hour_of_day;
+
+-- SSPECIAL QUERY: select top 10 sums of order total grouped by day in descending order by order total
+SELECT
+    CAST(transaction_time AS DATE) AS sale_day,
+    SUM(total_price) AS daily_sales
+FROM transactions
+GROUP BY sale_day
+ORDER BY daily_sales DESC
+LIMIT 10;
+
+--SPECIAL QUERY: select count of inventory items from inventory and menu grouped by menu item
+SELECT 
+    m.item_name,
+    COUNT(i.ingredient_id) AS ingredient_count
+FROM ingredients_map im
+JOIN ingredients i 
+    ON im.ingredient_id = i.ingredient_id
+JOIN menu m
+    ON im.item_id = m.item_id
+GROUP BY m.item_name
+ORDER BY m.item_name;
+
 --show all cashiers
 SELECT employee_id, name, pay
 FROM personnel
@@ -47,70 +85,6 @@ LIMIT 5;
 SELECT item_name, price * item_popularity
 From menu
 ORDER BY item_popularity DESC;
-
---Select count of orders grouped by week
-SELECT
-    FLOOR(EXTRACT(EPOCH FROM (transaction_time - TIMESTAMP '2024-01-01')) / (7 * 24 * 60 * 60)) + 1 AS week_number,
-    COUNT(*) AS order_count
-FROM transactions
-GROUP BY week_number
-ORDER BY week_number;
-
---Select count of orders, sum of order total grouped by hour
-SELECT
-    EXTRACT(HOUR FROM transaction_time) AS hour_of_day,
-    COUNT(*) AS order_count,
-    SUM(total_price) AS total_sales
-FROM transactions
-GROUP BY hour_of_day
-ORDER BY hour_of_day;
-
--- Select top 10 sums of order total grouped by day in descending order by order total
-SELECT
-    CAST(transaction_time AS DATE) AS sale_day,
-    SUM(total_price) AS daily_sales
-FROM transactions
-GROUP BY sale_day
-ORDER BY daily_sales DESC
-LIMIT 10;
-
---Select bottom sum of order total, top count of meny items by day grouped by week
-WITH daily_summary AS (
-    SELECT
-        FLOOR(EXTRACT(EPOCH FROM (transaction_time - TIMESTAMP '2024-01-01')) / (7*24*60*60)) + 1 AS week_number,
-        CAST(transaction_time AS DATE) AS sale_day,
-        SUM(total_price) AS daily_total
-    FROM transactions
-    GROUP BY week_number, sale_day
-),
-ranked_days AS (
-    SELECT
-        week_number,
-        sale_day,
-        daily_total,
-        RANK() OVER (PARTITION BY week_number ORDER BY daily_total ASC) AS rnk
-    FROM daily_summary
-),
-ranked_items AS (
-    SELECT
-        CAST(transaction_time AS DATE) AS sale_day,
-        menu_item,
-        COUNT(*) AS item_count,
-        RANK() OVER (PARTITION BY CAST(transaction_time AS DATE) ORDER BY COUNT(*) DESC) AS rnk
-    FROM transactions
-    GROUP BY sale_day, menu_item
-)
-SELECT
-    d.week_number,
-    d.sale_day,
-    d.daily_total AS lowest_sales,
-    i.menu_item AS top_seller
-FROM ranked_days d
-JOIN ranked_items i
-  ON d.sale_day = i.sale_day
-WHERE d.rnk = 1
-  AND i.rnk = 1
-ORDER BY d.week_number;
 
 --Get sales per weekday
 SELECT
