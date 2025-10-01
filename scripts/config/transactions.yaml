@@ -7,7 +7,7 @@ start: 2024-01-01
 end: 2025-01-01
 
 # Output CSV file path
-path: "data/transactions.csv"
+path: "../data/transactions.csv"
 
 # List of possible names
 first_names: ["Oliver", "James", "Abigail", "Mia", "Chloe", "Amelia", "Liam", "Noah", "Daniel", "Lucas", "Lily", "Sophia", "Elijah", "Matthew", "Harper", "Benjamin", "Olivia", "Emily", "Carter", "Emma", "Michael", "Scarlett", "Grace", "Ella", "Charlotte", "William", "Ava", "Isabella", "Joseph", "David", "Henry", "Samuel", "Mia", "Evelyn", "Alexander", "James", "William", "Abigail", "Olivia", "Elijah", "Benjamin", "Sophia", "Lucas", "Amelia", "Chloe", "Emily", "Emma", "Noah", "Daniel", "Grace", "Lily"]

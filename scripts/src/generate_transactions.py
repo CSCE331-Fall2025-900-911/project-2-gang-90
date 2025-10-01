@@ -51,8 +51,8 @@ class TransactionGenerator:
             self.end_timestamp = datetime(end.year, end.month, end.day, 23, 59, 59)
 
         # Ensure ordering
-        if self.end_date < self.start_date:
-            self.start_date, self.end_date = self.end_date, self.start_date
+        if self.end_timestamp < self.start_timestamp:
+            self.start_timestamp, self.end_timestamp = self.end_timestamp, self.start_timestamp
 
         self.path = path
         self.config_path = config_path
@@ -76,7 +76,7 @@ class TransactionGenerator:
         """Return a random full name. If names.yaml exists, use it; otherwise use hardcoded names."""
         if yaml:
             try:
-                with open("data/names.yaml", "r", encoding="utf-8") as f:
+                with open("data/transactions.yaml", "r", encoding="utf-8") as f:
                     names_cfg = yaml.safe_load(f) or {}
                 first_names = names_cfg.get("first_names", [])
                 last_names = names_cfg.get("last_names", [])
@@ -98,14 +98,13 @@ class TransactionGenerator:
         rows = []
         total = 0.0
         try:
-            personnel: pd.DataFrame = pd.read_csv("data/personnel.csv")
-            menu: pd.DataFrame = pd.read_csv("data/menu.csv")
+            personnel: pd.DataFrame = pd.read_csv("scripts/data/personnel.csv")
+            menu: pd.DataFrame = pd.read_csv("scripts/data/menu.csv")
         except FileNotFoundError as e:
             print(f"Error: {e}")
             return pd.DataFrame(columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
 
-        employee_ids = personnel['employee_id'].tolist()
-        menu_ids = menu['item_id'].tolist()
+        employee_ids = personnel['name'].tolist()
 
         for i in range(self.num_transactions):
             # Stop if total exceeds max_amount
@@ -113,11 +112,11 @@ class TransactionGenerator:
                 break
 
             customer_name = self.random_name()
-            transaction_time = self.random_date(self.start_date, self.end_date)  # naive datetime
+            transaction_time = self.random_date(self.start_timestamp, self.end_timestamp)  # naive datetime
             if transaction_time.tzinfo is not None:
                 transaction_time = transaction_time.replace(tzinfo=None)
             
-            employee_id = self.random_name()
+            employee_id = random.choice(employee_ids)
             order = self.random_menu_item(menu, random.randint(1, 5))
             total_price = round(order['price'].sum(), 2)
             total += total_price
@@ -129,5 +128,7 @@ class TransactionGenerator:
                 'total_price': total_price
             })
         # Save to CSV
-        rows.to_csv(self.path)
-        return pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
+        output = pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
+        print(self.path)
+        output.to_csv(self.path, index=False)
+        return output
