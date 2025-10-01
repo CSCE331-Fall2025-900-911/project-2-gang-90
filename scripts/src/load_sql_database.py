@@ -1,8 +1,8 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-TRANSACTIONS_FILE_PATH = "data/transactions.csv"
-TRANSACTION_DETAILS_FILE_PATH = "data/transaction_details.csv"
+TRANSACTIONS_FILE_PATH = "scripts/data/transactions.csv"
+TRANSACTION_DETAILS_FILE_PATH = "scripts/data/transaction_details.csv"
 TRANSACTIONS_TABLE_NAME = "transactions"
 TRANSACTION_DETAILS_TABLE_NAME = "transaction_details"
 
