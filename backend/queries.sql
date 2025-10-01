@@ -43,6 +43,9 @@ From menu
 ORDER BY item_popularity ASC 
 LIMIT 5; 
 
---
+--Order by porfit of each item
+SELECT item_name, price * item_popularity
+From menu
+ORDER BY item_popularity DESC 
 
 
