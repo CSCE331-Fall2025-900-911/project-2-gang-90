@@ -152,7 +152,7 @@ class TransactionGenerator:
                 'temp_id': i  # Temporary ID for joining with details
             })
         # Save to CSV
-        output = pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price'])
+        output = pd.DataFrame(rows, columns=['customer_name', 'transaction_time', 'employee_id', 'total_price', 'temp_id'])
         details_output = self.details[['item_id', 'temp_id']]
         details_output.to_csv(self.details_path, index=False)
         output.to_csv(self.path, index=False)
